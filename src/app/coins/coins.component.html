@@ -1,0 +1,19 @@
+<form class="mb-3">
+    <label for="search" class="form-label" [(ngModel)]="searchText">Rechercher</label>
+    <input type="search" name="search" class="form-control">
+</form>
+
+<div class="row row-gap-lg-5">
+    <div *ngFor="let coins of cryptoCurrencies?.data | filter: searchText" class="col col-lg">
+        <div class="card h-100 d-flex p-5" style="width: 18rem">
+            <div class="card-header">{{ coins.name }}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ coins.symbol }}</h5>
+                <h6 class="card-subtitle">Classement : {{ coins.rank }}</h6>
+                <p class="card-text">Prix : ${{ coins.priceUsd }}</p>
+                <button class="btn btn-primary">Voir plus</button>
+            </div>
+            <div class="card-footer"><a href="{{ coins.explorer }}">Voir plus</a></div>
+        </div>
+    </div>
+</div>
